@@ -27,7 +27,6 @@ router.post('/',[
         check('genero','No es un género válido').isIn(['Femenino','Masculino']),
         check('correo','El correo es obligatorio').not().isEmpty(),
         check('telefono','El telefono es obligatorio').not().isEmpty(),
-        check('clabeInterbancaria','La clabe es obligatoria').not().isEmpty(),
         check('horario','El horario es obligatorio').not().isEmpty(),
         check('correo','El correo no es válido').isEmail(),
         validarCampos
