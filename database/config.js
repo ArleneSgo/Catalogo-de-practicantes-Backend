@@ -2,11 +2,12 @@
 const Sequelize = require('sequelize');
 
 
-const sequelize = new Sequelize('practicantes_database',process.env.USER,process.env.PASSWORD,{
-    host: 'localhost',
+const sequelize = new Sequelize('heroku_2a1b8b7153dc704','b317d6f8e4ac24','bf58bd49',{
+    host: 'us-cdbr-east-05.cleardb.net',
     dialect: 'mysql',
     port: process.env.PORT_DB
 })
+//mysql://b317d6f8e4ac24:bf58bd49@us-cdbr-east-05.cleardb.net/heroku_2a1b8b7153dc704?reconnect=true
 const dbConection = async() => {
     await sequelize.authenticate()
     await sequelize.sync()
