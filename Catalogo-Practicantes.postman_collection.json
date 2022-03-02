@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "d1fe1475-1ac2-4733-a930-ec3ca7cf6d43",
+		"name": "Catalogo-Practicantes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Practicante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"a\",\r\n    \"apellidos\": \"test 1\",\r\n    \"genero\":\"Masculino\",\r\n    \"correo\": \"t1@tesT.com\",\r\n    \"telefono\": \"123457890\",\r\n    \"clabeInterbancaria\": \"1234567890123456\",\r\n    \"horario\": \"8 a 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/practicantes",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"practicantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Practicantes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/practicantes",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"practicantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Practicante",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"test 5\",\r\n    \"apellidos\": \"test 1\",\r\n    \"genero\":\"Femenino\",\r\n    \"correo\": \"t1@tesT.com\",\r\n    \"telefono\": \"123457890\",\r\n    \"clabeInterbancaria\": \"1234567890123456\",\r\n    \"horario\": \"8 a 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/practicantes/1",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"practicantes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Practicante ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/practicantes/1",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"practicantes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borra Practicante",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/practicantes/1",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"practicantes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

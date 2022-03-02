@@ -1,28 +1,20 @@
 const { response, request } = require('express');
 const Practicante = require('../models/practicante');
 
+//Mostrar todos lo practicantes dados de alta
 const practicantesGet = async(req = request, res = response) => {
-    const totalActivos = await Practicante.count({
+    /*const totalActivos = await Practicante.count({
         where: {
           "activo": 1
         }
-      });
+      });*/
     await Practicante.findAll({attributes:['nombre',
                                     'apellidos',
-                                    'genero',
                                     'correo',
-                                    'telefono',
-                                    'clabeInterbancaria',
-                                    'horario',
-                                    'activo'],
-                                where: {
-                                    'activo': 1
-                                    }})
+                                    'activo']})
     .then(practicantes=>{
-        //const resultados = JSON.stringify(practicantes)
         res.json({
-            practicantes,
-            totalActivos
+            practicantes
         })
     })
     .catch(error=>{
@@ -35,8 +27,7 @@ const practicantesPut = async(req, res = response)=> {
     const practicante = await Practicante.findOne({ where:{'id': id}})
     await practicante.update(resto)
     res.json({
-        msg: 'put API- controlador',
-        practicante
+        msg: 'Practicante registrado exitosamente',
     })
 }
 const practicantesPost = async(req, res = response)=> {
@@ -51,19 +42,25 @@ const practicantesPost = async(req, res = response)=> {
                                                 horario: horario});
    
     res.json({
-        msg: 'post API-controlador',
-        practicante
+        msg: 'Practicante modificado exitosamente',
     })
 }
 
 const practicantesDelete = async(req, res = response)=> {
     const {id} = req.params;
     const practicante = await Practicante.findOne({where:{'id':id}})
-    await practicante.update({'activo':0})
-    res.json({
-        msg: 'delete API-controlador',
-        practicante
-    })
+    if(practicante.activo === 1){
+        await practicante.update({'activo':0});  
+        res.json({
+            msg:'Se modificó practicante a estado no activo exitosamente'
+        }) 
+    }else{
+        await practicante.update({'activo':1});
+        res.json({
+            msg: 'Se modificó practicante a estado activo exitosamente'
+        })
+    }
+    
 }
 const practicantesIdGet = async(req, res = response)=> {
     const {id} = req.params;
