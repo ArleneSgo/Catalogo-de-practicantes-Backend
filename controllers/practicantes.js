@@ -8,7 +8,7 @@ const practicantesGet = async(req = request, res = response) => {
           "activo": 1
         }
       });*/
-    await Practicante.findAll({attributes:['nombre',
+    await Practicante.findAll({attributes:['id','nombre',
                                     'apellidos',
                                     'correo',
                                     'activo']})
@@ -27,7 +27,7 @@ const practicantesPut = async(req, res = response)=> {
     const practicante = await Practicante.findOne({ where:{'id': id}})
     await practicante.update(resto)
     res.json({
-        msg: 'Practicante registrado exitosamente',
+        msg: 'Practicante modificado exitosamente',
     })
 }
 const practicantesPost = async(req, res = response)=> {
@@ -42,7 +42,7 @@ const practicantesPost = async(req, res = response)=> {
                                                 horario: horario});
    
     res.json({
-        msg: 'Practicante modificado exitosamente',
+        msg: 'Practicante registrado exitosamente',
     })
 }
 
