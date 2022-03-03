@@ -33,6 +33,13 @@ const practicanteModel= sequelize.define('practicantes',{
     "activo": {
                 type: Sequelize.TINYINT(1),
                 defaultValue: 1
-                }
+                },
+    "fechaNacimiento":{
+                type: Sequelize.DATE,
+                /*get: function() { // or use get(){ }
+                    return this.getDataValue('fechaNacimiento')
+                      .toLocaleString('en-GB', { timeZone: 'UTC' });
+                  }*/
+    }
 })
 module.exports = practicanteModel

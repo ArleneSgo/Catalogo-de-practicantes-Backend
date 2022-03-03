@@ -1,5 +1,6 @@
 const { response, request } = require('express');
 const Practicante = require('../models/practicante');
+const sequelize = require('sequelize')
 
 //Mostrar todos lo practicantes dados de alta
 const practicantesGet = async(req = request, res = response) => {
@@ -31,7 +32,7 @@ const practicantesPut = async(req, res = response)=> {
     })
 }
 const practicantesPost = async(req, res = response)=> {
-    const {nombre,apellidos,genero,correo,telefono,clabeInterbancaria,horario} = req.body;
+    const {nombre,apellidos,genero,correo,telefono,clabeInterbancaria,horario,fechaNacimiento} = req.body;
     const practicante =await Practicante.create({
                                                 nombre: nombre,
                                                 apellidos: apellidos,
@@ -39,7 +40,8 @@ const practicantesPost = async(req, res = response)=> {
                                                 correo: correo,
                                                 telefono: telefono,
                                                 clabeInterbancaria: clabeInterbancaria,
-                                                horario: horario});
+                                                horario: horario,
+                                                fechaNacimiento:fechaNacimiento});
    
     res.json({
         msg: 'Practicante registrado exitosamente',
@@ -64,7 +66,29 @@ const practicantesDelete = async(req, res = response)=> {
 }
 const practicantesIdGet = async(req, res = response)=> {
     const {id} = req.params;
-    const practicante = await Practicante.findOne({where:{'id':id}})
+    const practicante = await Practicante.findOne({
+                                                    attributes:[
+                                                        'id',
+                                                        'nombre',
+                                                        'apellidos',
+                                                        'genero',
+                                                        'correo',
+                                                        'telefono',
+                                                        'clabeInterbancaria',
+                                                        'horario',
+                                                        'activo',
+                                                        [
+                                                            sequelize.fn
+                                                            (
+                                                              "DATE_FORMAT", 
+                                                              sequelize.col("fechaNacimiento"), 
+                                                              "%d-%m-%Y"
+                                                            ),
+                                                            "fechaNacimiento",
+                                                        ],
+                                                    ],
+                                                    where:{'id':id}})
+   // var fecha_utc = new Date(practicante.fechaNacimiento.getUTCFullYear(), practicante.fechaNacimiento.getUTCMonth(), practicante.fechaNacimiento.getUTCDate());
     res.json({
         msg: 'Get API-controlador',
         practicante
