@@ -28,7 +28,7 @@ const practicanteModel= sequelize.define('practicantes',{
     "clabeInterbancaria": {
                             type: Sequelize.STRING(45),
                             },
-    "horario": { type: Sequelize.INTEGER,
+    "horario": { type: Sequelize.STRING(45),
                 },
     "activo": {
                 type: Sequelize.TINYINT(1),
@@ -40,6 +40,8 @@ const practicanteModel= sequelize.define('practicantes',{
                     return this.getDataValue('fechaNacimiento')
                       .toLocaleString('en-GB', { timeZone: 'UTC' });
                   }*/
-    }
+    },
+    "idhorario": { type: Sequelize.INTEGER,
+    },
 })
 module.exports = practicanteModel
