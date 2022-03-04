@@ -1,5 +1,6 @@
 const { response, request } = require('express');
 const Practicante = require('../models/practicante');
+const Horario = require('../models/horario')
 const sequelize = require('sequelize')
 
 //Mostrar todos lo practicantes dados de alta
@@ -22,6 +23,7 @@ const practicantesGet = async(req = request, res = response) => {
         console.log(error)
     })
 };
+//Actualizar Practicante
 const practicantesPut = async(req, res = response)=> {
     const { id }  = req.params;
     const{_id,...resto}=req.body;
@@ -31,6 +33,7 @@ const practicantesPut = async(req, res = response)=> {
         msg: 'Practicante modificado exitosamente',
     })
 }
+//Crear Practicante
 const practicantesPost = async(req, res = response)=> {
     const {nombre,apellidos,genero,correo,telefono,clabeInterbancaria,horario,fechaNacimiento} = req.body;
     const practicante =await Practicante.create({
@@ -47,7 +50,7 @@ const practicantesPost = async(req, res = response)=> {
         msg: 'Practicante registrado exitosamente',
     })
 }
-
+//Activar/desactivar practicante
 const practicantesDelete = async(req, res = response)=> {
     const {id} = req.params;
     const practicante = await Practicante.findOne({where:{'id':id}})
@@ -64,6 +67,7 @@ const practicantesDelete = async(req, res = response)=> {
     }
     
 }
+//Mostrar practicante por id
 const practicantesIdGet = async(req, res = response)=> {
     const {id} = req.params;
     const practicante = await Practicante.findOne({
@@ -88,7 +92,6 @@ const practicantesIdGet = async(req, res = response)=> {
                                                         ],
                                                     ],
                                                     where:{'id':id}})
-   // var fecha_utc = new Date(practicante.fechaNacimiento.getUTCFullYear(), practicante.fechaNacimiento.getUTCMonth(), practicante.fechaNacimiento.getUTCDate());
     res.json({
         msg: 'Get API-controlador',
         practicante

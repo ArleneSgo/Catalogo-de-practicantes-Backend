@@ -28,7 +28,7 @@ const practicanteModel= sequelize.define('practicantes',{
     "clabeInterbancaria": {
                             type: Sequelize.STRING(45),
                             },
-    "horario": { type: Sequelize.STRING(45),
+    "horario": { type: Sequelize.INTEGER,
                 },
     "activo": {
                 type: Sequelize.TINYINT(1),

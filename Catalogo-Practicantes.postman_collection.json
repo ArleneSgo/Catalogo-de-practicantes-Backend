@@ -142,6 +142,70 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Horarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/horarios",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"horarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Proponer Horario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"horario\": \"8AM-1PM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://catalogo-de-practicantes-back.herokuapp.com/api/horarios/3",
+					"protocol": "https",
+					"host": [
+						"catalogo-de-practicantes-back",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"horarios",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

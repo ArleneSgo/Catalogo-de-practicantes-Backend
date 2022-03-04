@@ -4,7 +4,8 @@ const { practicantesGet,
         practicantesIdGet,
         practicantesPut, 
         practicantesPost, 
-        practicantesDelete} = require('../controllers/practicantes');
+        practicantesDelete,
+        } = require('../controllers/practicantes');
 const {existePracticantePorId} = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 
@@ -35,5 +36,6 @@ router.delete('/:id',[
         check('id').custom(existePracticantePorId),
         validarCampos
 ], practicantesDelete);
+
 
 module.exports = router;

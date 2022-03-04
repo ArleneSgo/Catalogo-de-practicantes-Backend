@@ -7,6 +7,7 @@ class Server{
         this.app = express();
         this.port = process.env.PORT || 3000;
         this.practicantesPath = '/api/practicantes';
+        this.horariosPath = '/api/horarios';
         // Conectar a base de datos
         this.conectarDb();
         //middlewares
@@ -29,6 +30,7 @@ class Server{
     }
     routes(){
         this.app.use(this.practicantesPath, require('../routes/practicantes'));
+        this.app.use(this.horariosPath, require('../routes/horarios'));
     }
     listen(){
         this.app.listen(this.port,() => {
